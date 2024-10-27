@@ -1,4 +1,3 @@
-
 const SkillItem = ({ title, value }) => {
   return (
     <li className="skills-item">
@@ -7,10 +6,13 @@ const SkillItem = ({ title, value }) => {
         <data value={value}>{value}%</data>
       </div>
       <div className="skill-progress-bg">
-        <div className="skill-progress-fill" style={{ width: `${value}%` }}></div>
+        <div
+          className="skill-progress-fill"
+          style={{ width: `${value}%` }}
+        ></div>
       </div>
     </li>
   );
-}
+};
 
 export default SkillItem;

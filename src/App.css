@@ -727,6 +727,7 @@ main {
 .timeline .title-wrapper {
   display: flex;
   align-items: center;
+
   gap: 15px;
   margin-bottom: 25px;
 }
@@ -803,6 +804,7 @@ main {
 .skill .title-wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 5px;
   margin-bottom: 8px;
 }
