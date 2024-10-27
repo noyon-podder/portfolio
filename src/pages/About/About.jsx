@@ -7,26 +7,27 @@ import Service from "./Service";
 const servicesData = [
   {
     icon: "/images/icon-design.svg",
-    title: "Web design",
+    title: "Building  Web Applications",
     description:
-      "The most modern and high-quality design made at a professional level.",
+      "Creating responsive, dynamic web applications using the MERN stack  to provide seamless and efficient user experiences",
   },
   {
     icon: "/images/icon-dev.svg",
-    title: "Web development",
-    description: "High-quality development of sites at the professional level.",
+    title: "Designing & Managing Databases",
+    description:
+      "Working with MongoDB to design flexible, scalable databases that support complex data structures",
   },
   {
     icon: "/images/icon-app.svg",
-    title: "Responsive Design",
+    title: "API Development & Integration",
     description:
-      "Professional development of applications for iOS and Android.",
+      "Building RESTful APIs with Express and Node.js to enable smooth data communication",
   },
   {
     icon: "/images/icon-photo.svg",
-    title: "Photography",
+    title: "Optimizing for Performance",
     description:
-      "I make high-quality photos of any category at a professional level.",
+      "Focusing on performance optimization and implementing best practices to ensure fast load times and high scalability.",
   },
 ];
 
@@ -36,7 +37,6 @@ const About = () => {
     fetch("testimonials.json")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setTestimonials(data);
       });
   }, []);
@@ -48,18 +48,21 @@ const About = () => {
 
       <section className="about-text">
         <p>
-          I'm Creative Director and UI/UX Designer from Sydney, Australia,
-          working in web development and print media. I enjoy turning complex
-          problems into simple, beautiful and intuitive designs.
+          Hi, I'm <strong>Noyon Podder</strong>, a dedicated{" "}
+          <strong>Full Stack Developer</strong> using MERN with a passion for
+          creating dynamic, responsive, and user-friendly web applications. With
+          expertise in MongoDB, Express, React, and Node.js.
         </p>
 
         <p>
-          My job is to build your website so that it is functional and
-          user-friendly but at the same time attractive. Moreover, I add
-          personal touch to your product and make sure that is eye-catching and
-          easy to use. My aim is to bring across your message and identity in
-          the most creative way. I created web design for many famous brand
-          companies.
+          {" "}
+          I specialize in building full-stack applications that deliver seamless
+          functionality and exceptional performance. Whether it's crafting
+          intuitive front-end interfaces or developing robust server-side
+          solutions, I’m committed to delivering high-quality code and
+          innovative solutions. Explore my projects to see how I bring ideas to
+          life through clean, scalable code and modern design." Let me know if
+          you’d like any tweaks!
         </p>
       </section>
 
@@ -105,7 +108,8 @@ const About = () => {
       - clients
     --> */}
 
-      <section className="clients">
+      {/* //! client section are comment  */}
+      {/* <section className="clients">
         <h3 className="h3 clients-title">Clients</h3>
 
         <ul className="clients-list has-scrollbar">
@@ -145,7 +149,7 @@ const About = () => {
             </a>
           </li>
         </ul>
-      </section>
+      </section> */}
     </article>
   );
 };

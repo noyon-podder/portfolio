@@ -1,5 +1,3 @@
-
-
 const Service = ({ title, icon, description }) => {
   return (
     <li className="service-item">
@@ -12,6 +10,6 @@ const Service = ({ title, icon, description }) => {
       </div>
     </li>
   );
-}
+};
 
 export default Service;
