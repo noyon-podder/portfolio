@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import { baseApi } from "../../config/config";
 
 const ProjectDetails = () => {
   const { portfolioId } = useParams();
@@ -7,8 +8,8 @@ const ProjectDetails = () => {
   const { data } = useQuery({
     queryKey: ["PROJECT"],
     queryFn: async () => {
-      return fetch(`http://localhost:5000/api/project/${portfolioId}`).then(
-        (res) => res.json()
+      return fetch(`${baseApi}/api/project/${portfolioId}`).then((res) =>
+        res.json()
       );
     },
   });

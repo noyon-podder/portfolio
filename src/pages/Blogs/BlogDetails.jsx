@@ -4,6 +4,7 @@ import { formatDate } from "../../utils/formatDate";
 import { FaCircle } from "react-icons/fa";
 import { BiLoaderCircle } from "react-icons/bi";
 import Loading from "../../components/Loading";
+import { baseApi } from "../../config/config";
 
 const BlogDetails = () => {
   const { blogId } = useParams();
@@ -11,9 +12,7 @@ const BlogDetails = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["PROJECT"],
     queryFn: async () => {
-      return fetch(`http://localhost:5000/api/blog/${blogId}`).then((res) =>
-        res.json()
-      );
+      return fetch(`${baseApi}/api/blog/${blogId}`).then((res) => res.json());
     },
   });
 

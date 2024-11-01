@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import BlogPost from "./BlogPost";
 import "./Blogs.css";
+import { baseApi } from "../../config/config";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     const fetchData = () => {
-      fetch(`http://localhost:5000/api/blog`)
+      fetch(`${baseApi}/api/blog`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);

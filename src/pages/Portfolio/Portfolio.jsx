@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaLink, FaRegEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { baseApi } from "../../config/config";
 
 const Portfolio = () => {
   // State to store project data and filtered projects
@@ -12,7 +13,7 @@ const Portfolio = () => {
 
   // Load project data from projects.json
   useEffect(() => {
-    fetch("http://localhost:5000/api/project")
+    fetch(`${baseApi}/api/project`)
       .then((response) => response.json())
       .then((data) => {
         setProjects(data.data);
@@ -21,6 +22,7 @@ const Portfolio = () => {
       .catch((error) => console.error("Error loading project data:", error));
   }, []);
 
+  console.log({ projects });
   // Function to handle category filter selection
   const handleFilterClick = (category) => {
     setSelectedCategory(category);
