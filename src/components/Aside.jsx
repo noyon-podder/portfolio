@@ -1,3 +1,4 @@
+import { FiDownload } from "react-icons/fi";
 import {
   GiCalendar,
   GiClawSlashes,
@@ -5,6 +6,7 @@ import {
   GiMayanPyramid,
   GiPhone,
 } from "react-icons/gi";
+import { IoDocument } from "react-icons/io5";
 
 const Aside = () => {
   return (
@@ -87,6 +89,25 @@ const Aside = () => {
               <p className="contact-title">Location</p>
 
               <address>Mirpur 1, Dhaka</address>
+            </div>
+          </li>
+
+          <li className="contact-item">
+            <div className="icon-box">
+              <IoDocument />
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div className="contact-info">
+              <p className="contact-title">Resume</p>
+
+              <a
+                href="/resume.pdf"
+                download="noyon-podder MERN Stack resume.pdf"
+                className="text-[#FFBC5E] flex items-center gap-1 w-fit px-2 py-[3px] bg-[#333] mt-2 rounded-md"
+              >
+                <FiDownload /> Download
+              </a>
             </div>
           </li>
         </ul>

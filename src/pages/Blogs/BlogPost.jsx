@@ -1,24 +1,34 @@
+import { Link } from "react-router-dom";
+import { formatDate } from "../../utils/formatDate";
 
-
-const BlogPost = ({ title, category, date, image, description }) => {
+const BlogPost = ({ blog }) => {
+  const { title, imageLink, category, createdAt, _id } = blog;
   return (
     <li className="blog-post-item">
-      <a href="#">
+      <Link to={`/blogs/${_id}`}>
         <figure className="blog-banner-box">
-          <img src={image} alt={title} loading="lazy"/>
+          <img src={imageLink} alt={title} loading="lazy" />
         </figure>
         <div className="blog-content">
           <div className="blog-meta">
             <p className="blog-category">{category}</p>
             <span className="dot"></span>
-            <time dateTime={date}>{date}</time>
+            {/* <time dateTime={date}>{date}</time> */}
+            <p className="text-white ml-2 font-semibold text-base">
+              {formatDate(createdAt)}
+            </p>
           </div>
           <h3 className="h3 blog-item-title">{title}</h3>
-          <p className="blog-text">{description}</p>
+          <div className="bg-red-500">
+            {/* <div
+              className="text-white w-full"
+              dangerouslySetInnerHTML={{ __html: content }}
+            ></div> */}
+          </div>
         </div>
-      </a>
+      </Link>
     </li>
   );
-}
+};
 
 export default BlogPost;
