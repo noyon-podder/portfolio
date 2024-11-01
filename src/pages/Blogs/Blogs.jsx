@@ -2,24 +2,21 @@ import React, { useEffect, useState } from "react";
 import BlogPost from "./BlogPost";
 import "./Blogs.css";
 import { baseApi } from "../../config/config";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../components/Loading";
 
 const Blogs = () => {
-  const [blogs, setBlogs] = useState([]);
+  const { isLoading, data: blogs } = useQuery({
+    queryKey: ["PROJECT"],
+    queryFn: async () => {
+      const response = await fetch(`${baseApi}/api/blog`);
+      const data = await response.json();
+      // setBlogs(data?.data);
+      return data;
+    },
+  });
 
-  useEffect(() => {
-    const fetchData = () => {
-      fetch(`${baseApi}/api/blog`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setBlogs(data?.data);
-        });
-    };
-
-    fetchData();
-  }, []);
-
-  console.log(blogs);
+  if (isLoading) return <Loading />;
 
   return (
     <section className="blog" data-page="blog">
@@ -32,7 +29,7 @@ const Blogs = () => {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          {blogs.map((post, index) => (
+          {blogs?.data.map((post, index) => (
             <BlogPost key={index} blog={post} />
           ))}
         </div>

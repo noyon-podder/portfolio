@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { baseApi } from "../../config/config";
+import Loading from "../../components/Loading";
 
 const ProjectDetails = () => {
   const { portfolioId } = useParams();
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["PROJECT"],
     queryFn: async () => {
       return fetch(`${baseApi}/api/project/${portfolioId}`).then((res) =>
@@ -16,8 +17,11 @@ const ProjectDetails = () => {
 
   const projectData = data?.data;
 
-  console.log(projectData);
+  if (isLoading) {
+    return <Loading />;
+  }
 
+  console.log(projectData);
   return (
     <section>
       <header>
@@ -33,14 +37,20 @@ const ProjectDetails = () => {
             loading="lazy"
           />
         </div>
-
+        <Link
+          to={projectData?.liveURL}
+          target="_blank"
+          className="py-3 text-end cursor-pointer text-[#FFBC5E] text-lg"
+        >
+          Live URL
+        </Link>
         <div className="py-5">
           <h2 className="text-[28px] font-semibold text-white mb-10">
             {projectData?.title}
           </h2>
           <div
             dangerouslySetInnerHTML={{ __html: projectData?.description }}
-            className="text-white text-[20px] list-disc"
+            className="text-gray-300 text-lg list-disc text-normal"
           ></div>
         </div>
       </div>

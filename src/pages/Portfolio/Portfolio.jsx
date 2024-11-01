@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { FaLink, FaRegEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { baseApi } from "../../config/config";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../components/Loading";
 
 const Portfolio = () => {
   // State to store project data and filtered projects
@@ -11,16 +13,20 @@ const Portfolio = () => {
   // State to store the selected category
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Load project data from projects.json
-  useEffect(() => {
-    fetch(`${baseApi}/api/project`)
-      .then((response) => response.json())
-      .then((data) => {
-        setProjects(data.data);
-        setFilteredProjects(data.data);
-      })
-      .catch((error) => console.error("Error loading project data:", error));
-  }, []);
+  const { isLoading } = useQuery({
+    queryKey: ["PROJECT"],
+    queryFn: async () => {
+      const response = await fetch(`${baseApi}/api/project`);
+      const data = await response.json();
+      setProjects(data.data);
+      setFilteredProjects(data.data);
+      return data;
+    },
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   console.log({ projects });
   // Function to handle category filter selection
